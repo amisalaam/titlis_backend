@@ -13,6 +13,7 @@ class Package(models.Model):
         return self.name
     
 class TripPlans(models.Model):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     price = models.FloatField()
     image = models.ImageField(upload_to='images/trip_plans', null=True, blank=True)
