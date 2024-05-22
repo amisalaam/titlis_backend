@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     
     #CREATED APPS
     'Credentials',
+    'Packages',
     
 ]
 

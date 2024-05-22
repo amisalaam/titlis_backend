@@ -38,7 +38,7 @@ class LoginView(TokenObtainPairView):
         serializer = self.get_serializer(data=request.data)
         try:
             serializer.is_valid(raise_exception=True)
-            return Response(serializer.validated_data, status=status.HTTP_200_OK)
+            return Response( data=serializer.validated_data, status=status.HTTP_200_OK)
         except AuthenticationFailed as e:
             return Response({'message': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         except Exception as e:
