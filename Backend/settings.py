@@ -17,7 +17,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://titlis-backend.onrender.com'
+]
 
 
 # Application definition
@@ -119,6 +121,7 @@ DATABASES = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://titlis-backend.onrender.com"
     
 ]
 
