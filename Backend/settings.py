@@ -18,7 +18,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://titlis-backend.onrender.com'
+    '*'
 ]
 
 
