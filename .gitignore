@@ -15,7 +15,8 @@ __pycache__/
 # Secret key
 *.secret_key
 
-# Database
+# Database 
+
 # *.sqlite3
 
 # IDE specific files
