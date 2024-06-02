@@ -1,6 +1,8 @@
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import UntypedToken
+from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,6 +11,20 @@ from rest_framework.permissions import AllowAny
 from .serializers import UserSerializer
 from .models import User
 
+
+
+
+class TokenVerifyView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        token = request.data.get('token')
+        try:
+            UntypedToken(token)
+            return Response({"message": "Token is valid"}, status=status.HTTP_200_OK)
+        except (TokenError, InvalidToken) as e:
+            return Response({"message": "Token is invalid or expired"}, status=status.HTTP_401_UNAUTHORIZED)
+        
 class SignupView(APIView):
     permission_classes = [AllowAny]
 
