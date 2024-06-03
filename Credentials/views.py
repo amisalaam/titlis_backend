@@ -14,16 +14,6 @@ from .models import User
 
 
 
-class TokenVerifyView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        token = request.data.get('token')
-        try:
-            UntypedToken(token)
-            return Response({"message": "Token is valid"}, status=status.HTTP_200_OK)
-        except (TokenError, InvalidToken) as e:
-            return Response({"message": "Token is invalid or expired"}, status=status.HTTP_401_UNAUTHORIZED)
         
 class SignupView(APIView):
     permission_classes = [AllowAny]
