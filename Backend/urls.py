@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Credentials.urls')),
     path('packages/',include('Packages.urls')),
+    path('feeds/',include('Packages.urls')),
 ]
 
 if settings.DEBUG:
