@@ -1,6 +1,18 @@
-from django.shortcuts import render,HttpResponse
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import *
+from .models import Post
 # Create your views here.
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the feed index.")
+
+class PostView(APIView):
+    def get(self,request):
+        feed = Post.objects.all()
+        serializer = PostSerializer(feed, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK,message="Feed fetched successfully")
+        
+        
+        
