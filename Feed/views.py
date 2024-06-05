@@ -1,18 +1,30 @@
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import *
-from .models import Post
-# Create your views here.
-
+from .models import Post, TravelNews
+from .serializers import PostSerializer, TravelNewsSerializer
 
 class PostView(APIView):
-    def get(self,request):
+    def get(self, request):
         feed = Post.objects.all()
         serializer = PostSerializer(feed, many=True)
         
-        return Response(serializer.data, status=status.HTTP_200_OK,message="Feed fetched successfully")
+        response_data = {
+            'data': serializer.data,
+            'message': "Feed fetched successfully"
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
+class TravelNewsView(APIView):
+    def get(self,request):
+        news = TravelNews.objects.all()
+        serilizers = TravelNewsSerializer(news, many=True)
         
-        
-        
+        response_data = {
+            'data': serilizers.data,
+            'message': "News fetched successfully"
+        } 
+
+        return Response(response_data, status=status.HTTP_200_OK)
