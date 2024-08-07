@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Credentials',
     'Packages',
     'Feed',
+    'reviews',
     
 ]
 
