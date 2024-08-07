@@ -8,6 +8,8 @@ from .manager import CustomUserManager
 class User(AbstractBaseUser,PermissionsMixin):
     username = models.CharField(_('username'),max_length=255)
     email = models.EmailField(_('email address'), unique=True,max_length=255)
+    country = models.CharField(_('country'),max_length=255 ,null=True,blank=True)
+    image = models.ImageField(upload_to='images/users', null=True, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True,verbose_name=_('date joined'))
