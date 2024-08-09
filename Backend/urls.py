@@ -9,6 +9,7 @@ urlpatterns = [
     path('',include('Credentials.urls')),
     path('packages/',include('Packages.urls')),
     path('feeds/',include('Feed.urls')),
+    path('reviews/',include('reviews.urls')),
 ]
 
 if settings.DEBUG:
